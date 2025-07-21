@@ -3,15 +3,16 @@ const fs = require('fs');
 const path = require('path');
 
 
-const port = 3000 ;
+const port = 5000 ;
+const ext = ".html";
 
 const server = http.createServer((req , res) => {
-    const filepath = path.join(__dirname, req.url === "/" ? "index.html" : req.url);
-    const extname = String(path.extname(filepath)).toLowerCase();
+    const filepath = path.join(__dirname, req.url === "/" ? "index.html" : req.url + ext);
+    // const extname = String(path.extname(filepath)).toLowerCase();
     let contentType = "application/octet-stream";
 
     // Set content type based on file extension
-    switch (extname) {
+    switch (ext) {
         case ".html":
             contentType = "text/html";
             break;
